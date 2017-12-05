@@ -1,0 +1,96 @@
+<!doctype html>
+        <html lang="cn">
+<head>
+    <meta charset="utf-8" />
+    <style>
+        #list{
+            width: 400px;
+            height: auto;
+            overflow: hidden;
+        }
+        img{
+            width:155px;
+            height:190px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="list">
+    <table>
+        <tr>
+            <td id="list1">
+                <table>
+                    <tr>
+                        <td><img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s017.jpg" alt="无缝滚动" /></td>
+                        <td><img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s018.jpg" alt="无缝滚动" /></td>
+                        <td> <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s019.jpg" alt="无缝滚动" /></td>
+                        <td>  <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s020.jpg" alt="无缝滚动" /></td>
+                        <td>  <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s021.jpg" alt="无缝滚动" /></td>
+                        <td> <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s022.jpg" alt="无缝滚动" /></td>
+                        <td> <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s023.jpg" alt="无缝滚动" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td id="list2"></td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<script>
+  /*  var maquree = function(id) {
+        alert("1111");
+        var list = document.getElementById(id);
+        var list1 = list.getElementsById("list1");
+        var list2 = list.getElementsById("list2");
+        var speed = 10;
+        list2.innerHTML = list1.innerHTML;
+        var folling = function () {
+            if (list2.offsetWidth - list.scrollLeft <= 0) {
+
+                list.scrollLeft = 0;
+            } else {
+                list.scrollLeft++;
+            }
+
+        };
+
+
+        var timer = setInterval(folling, speed);
+        list.onmouseover = function () {
+            clearInterval(timer);
+        };
+        list.onmouseout = function () {
+            timer = setInterval(folling, speed);
+        }
+    };*/
+        window.onload=function(){
+            var list = document.getElementById("list");
+            var list1 = document.getElementById("list1");
+            var list2 = document.getElementById("list2");
+        
+            var speed = 10;
+            list2.innerHTML = list1.innerHTML;
+             function folling () {
+                if (list2.offsetWidth - list.scrollLeft <= 0) {
+
+                    list.scrollLeft = 0;
+                } else {
+                    list.scrollLeft++;
+                }
+
+            }
+
+            var timer = setInterval(folling, speed);
+            list.onmouseover = function () {
+                clearInterval(timer);
+            };
+            list.onmouseout = function () {
+                timer = setInterval(folling, speed);
+            }
+        }
+
+</script>
+</html>

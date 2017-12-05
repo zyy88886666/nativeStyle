@@ -1,0 +1,64 @@
+<!doctype html>
+        <html lang="cn">
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        .left{float: left;height:200px;}
+        .left:after{content: ".";height: 0;clear: left;overflow: hidden;visibility: hidden;}
+        .main{width: 70%;background-color: #aaa;}
+        ul{list-style-type: none;}
+        ul li{width: 250px;height: 30px;line-height: 30pc;border-bottom: 1px dashed red;}
+        ul li:hover{cursor: pointer;}
+        ul .act{background-color: aqua;}
+        .hide{display: none;}
+    </style>
+
+    <script>
+        window.onload= function (){
+            tab("tab","li","main","div","onclick");
+            function tab(tab,tab_tag,main,main_tag,evl){
+                var tab = document.getElementById(tab);
+                var tab_tag = tab.getElementsByTagName(tab_tag);
+                var main = document.getElementById(main);
+                var main_tag = main.getElementsByTagName(main_tag);
+                var  len = tab_tag.length;
+                var i =0;
+                for(i=0;i<len;i++){
+                    tab_tag[i].index = i;
+                    tab_tag[i][evl]= function(){
+                     for(i=0;i<len;i++){
+                         tab_tag[i].className='';
+                         main_tag[i].className='hide';
+                     }
+                     tab_tag[this.index].className ='act';
+                        main_tag[this.index].className = '';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div class="left">
+    <ul id="tab">
+        <li class="act">菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+        <li>菜单4</li>
+        <li>菜单5</li>
+    </ul>
+</div>
+
+<div class="left main" id="main">
+    <div>内容1</div>
+    <div class="hide">内容2</div>
+    <div class="hide">内容3</div>
+    <div class="hide">内容4</div>
+    <div class="hide">内容5</div>
+</div>
+
+</body>
+
+
+</html>

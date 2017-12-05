@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片上下无缝滚动的效果</title>
+    <style type="text/css">
+        #marquee {
+            position: relative;
+            height: 300px;
+            width: 200px;
+            overflow: hidden;
+            border: 10px solid #369;
+            padding:0;
+            margin:0;
+        }
+        #marquee img {
+            display: block;
+        }
+        #marquee dd {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<dl id="marquee">
+    <dt>
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s017.jpg" alt="无缝滚动" />
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s018.jpg" alt="无缝滚动" />
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s019.jpg" alt="无缝滚动" />
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s020.jpg" alt="无缝滚动" />
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s021.jpg" alt="无缝滚动" />
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s022.jpg" alt="无缝滚动" />
+        <img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/199042/o_s023.jpg" alt="无缝滚动" />
+    </dt>
+    <dd>
+    </dd>
+</dl>
+<script type="text/javascript">
+   var Marquee = function(id){
+      var container = document.getElementById(id);
+
+        var       original = container.getElementsByTagName("dt")[0];
+        var     clone = container.getElementsByTagName("dd")[0];
+        var     speed = 10;
+        clone.innerHTML= original.innerHTML;
+        var folling= function(){
+
+            if(container.scrollTop==clone.offsetTop){
+                container.scrollTop=0;
+            }else{
+                container.scrollTop++;
+            }
+        };
+        var timer= setInterval(folling,speed);
+        container.onmouseover = function(){ clearInterval(timer);};
+        container.onmouseout = function(){timer= setInterval(folling,speed);}
+    };
+    window.onload=function(){
+        Marquee("marquee");
+    };
+</script>
+</body>
+</html>
