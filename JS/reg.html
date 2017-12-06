@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+var str='abcdef 34 d a 54 7';
+alert(str.charAt(0));  //a
+
+
+var re=/\d/g;
+alert(str.match(re));  //3,4,5,4,7
+
+var re1=/a/g;
+alert(str.replace(re1, '0')); //0bcdef 34 d 0 54 7
+
+alert(str.search('u'));		//位置, -1
+
+alert(str.substring(2, 5));	//不包括结束位置  cde
+alert(str.substring(1));   //bcdef 34 d a 54 7
+
+var email=/^\w+@[a-z0-9]+\.[a-z]+$/i;  //邮箱
+</script>
+</head>
+
+<body>
+</body>
+</html>
