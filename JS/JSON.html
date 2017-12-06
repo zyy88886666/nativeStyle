@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+</body>
+<script type="text/javascript">
+var JSON = { a: 2, b: 4, c: 9 };
+var  ARR = [ 2 , 4, 9 ];
+alert( JSON.length );    //undefined  
+alert( ARR.length );     //3
+
+alert( JSON["a"] );     //2  一定要加引号，否则会报错
+alert( JSON.a );        //2
+
+for( var i in JSON ){   //JSON可以用for in
+	alert("第"+ i + "个东西是: "+ JSON[i]);
+}
+
+//数组用length
+//JSON用for in
+
+
+
+
+</script>
+</html>
