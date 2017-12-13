@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <title>方法链--详情</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<div class="content">
+<p>框架自适应</p>
+<iframe src="2.html" id="iframeone" class="iframeone" frameBorder=0 scrolling=no min-height="500px" width="100%" ></iframe>
+</div>
+</body>
+<script type="text/javascript">
+//页面高度自适应
+function setIframeHeight(iframe) {
+  if (iframe) {
+    window.clearInterval(timer1);  
+    var iframeWin = iframe.contentWindow || iframe.contentDocument;
+    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+  }else{
+    window.clearInterval(timer1);  
+  }
+};
+
+//页面自加载
+window.onload = function () {
+  setIframeHeight(document.getElementById('iframeone'));
+};
+
+// iframe加载的时候高度慢慢变啊，用户看到了才知道你的内容慢慢加载啊。网上说的都是在onload里设置高度，可是onload是加载完毕才调用的。所以当你加载一些大图片时，就会发现先显示一点点，等半天以后呢，突然就全部显示了，这个设计是不是有点奇葩？
+
+// 好吧，其实也比较简单，既然onload是加载完毕才调用，那我在加载过程当中定时设置高度不就行了？
+
+// 定义一个函数，定时调用并刷新iframe高度  
+function reinitIframe(){  
+  var iframe = document.getElementById("iframeone");  
+  try{  
+      var iframeWin = iframe.contentWindow || iframe.contentDocument;
+      var bHeight = iframeWin.document.body.scrollHeight;  
+      var dHeight = iframeWin.document.documentElement.scrollHeight;  
+      var height = Math.max(bHeight, dHeight);  
+      iframe.height = height;  
+  }catch (ex){}  
+}  
+var timer1 = window.setInterval("reinitIframe()", 100); //定时调用开始 
+
+
+//需要解决当窗口改变大小的时候执行js事件，以让iframe自适就高度。
+window.onresize=function(){  
+  reinitIframe();  
+} 
+</script>
+
+</html>
