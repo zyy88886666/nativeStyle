@@ -91,3 +91,32 @@ function insertAfter(newElement,targetElement){
         parent.insertBefore(newElement,targetElement.nextSilbing);
     }
 }
+
+//增加class
+function addClass(ele,value){
+    if(!ele.className){
+        ele.className = value;
+    }else{
+        var newClass =  ele.className;
+        newClass+= " ";
+        newClass+=value;
+        ele.className =newClass;
+    }
+}
+
+//删除class
+function removeClass(ele,value){
+    if(!ele.className) {
+
+    }else{
+        var newClass = ele.className.split(" ");
+        newClass.forEach(function(item,index,arr){
+            if(item==value){
+                 newClass.splice(index-1,1);
+            }
+            return newClass;
+        })
+        ele.className = newClass;
+    }
+
+}
