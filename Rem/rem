@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Style Guide</title>
+<meta name="description" content="不超过150个字符">
+<meta name="keywords" content="">
+<meta name="author" content="zhaoyuanyuan, email@gmail.com">
+
+<!-- 为移动设备添加 viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+<style>
+body{margin: 0}
+div{background: red;float: left;width: 4rem;height:4rem;}
+section{
+  width: 16rem;
+  height: 4rem;
+  background: pink;
+  clear: both;
+}
+p{
+  width: 2.35rem;
+  height: 2.35rem;
+  background: green;
+}
+
+/*overflow在ioS设备下不起作用，仍然有滚动条*/
+</style>
+<script>
+(function (){
+  var html = document.documentElement;
+  var width = html.getBoundingClientRect().width; //取手机尺寸
+  html.style.fontSize = width/16+"px";
+  // iphone5  1rem = 20
+  // 除以16的原因是以iPhone5为准
+
+ // console.log(width)
+})();
+
+</script>
+</head>
+<body>
+<div class="em">em</div>
+<div class="rem">rem</div>
+<div></div>
+<div></div>
+<section></section>
+<p></p>
+</body>
